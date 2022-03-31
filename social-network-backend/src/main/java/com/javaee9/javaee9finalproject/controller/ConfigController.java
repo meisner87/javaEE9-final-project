@@ -26,4 +26,5 @@ public class ConfigController {
 
         return configService.getInitialConfig();
     }
+
 }
