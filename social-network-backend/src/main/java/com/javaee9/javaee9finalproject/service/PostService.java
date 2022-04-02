@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 public class PostService {
     private final PostRepository postRepository;
     private final PostConverter postConverter;
+
     public PostService(PostRepository postRepository, PostConverter postConverter) {
         this.postRepository = postRepository;
         this.postConverter = postConverter;
@@ -41,4 +42,17 @@ public class PostService {
                 .map(post -> postConverter.fromEntityToDto(post))
                 .toList();
     }
-}
+
+    // receipt
+// 1. convert to entity from dto
+// 2. store entity into db
+// 3. return to client dto based on stored entity (with id and creationTimestamp and updateTimestamp)
+    public PostDto createNewPost(PostDto toStore) {
+        log.info("creating new post: [{}]", toStore);
+        var entityToStore = postConverter.fromDtoToEntity(toStore);
+        var storedEntity = postRepository.save(entityToStore);
+        var result = postConverter.fromEntityToDto(storedEntity);
+        log.info("created post: [{}]", result);
+        return result;
+    }
+    }
