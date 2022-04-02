@@ -35,7 +35,12 @@ public class PostController {
         // read Post by id from database
         // convert Post into PostDto
         // return to user
-        return null;
+        return new PostDto(1L,
+                "myPost",
+                "content",
+                "me",
+                "1998",
+                "1988");
     }
 
 }
