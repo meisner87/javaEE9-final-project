@@ -44,15 +44,15 @@ public class PostService {
     }
 
     // receipt
-// 1. convert to entity from dto
-// 2. store entity into db
-// 3. return to client dto based on stored entity (with id and creationTimestamp and updateTimestamp)
+    // 1. convert to entity from dto
+    // 2. store entity into db
+    // 3. return to client dto based on stored entity (with id and creationTimestamp and updateTimestamp)
     public PostDto createNewPost(PostDto toStore) {
         log.info("creating new post: [{}]", toStore);
-        var entityToStore = postConverter.fromDtoToEntity(toStore);
-        var storedEntity = postRepository.save(entityToStore);
-        var result = postConverter.fromEntityToDto(storedEntity);
+        var entity = postConverter.fromDtoToEntity(toStore);
+        postRepository.save(entity);
+        var result = postConverter.fromEntityToDto(entity);
         log.info("created post: [{}]", result);
         return result;
     }
-    }
+}

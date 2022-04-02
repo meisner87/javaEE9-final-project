@@ -40,10 +40,10 @@ public class PostController {
                 "1988");
     }
     @PostMapping()
-    public PostDto createNewPost(PostDto toStore){
-        log.info("trying to store new post: [{}]",toStore);
-
-       return postService.createNewPost(toStore);
+    public PostDto createNewPost(@RequestBody PostDto toStore) {
+        log.info("trying to store new post: [{}]", toStore);
+        return postService.createNewPost(toStore);
     }
+
 
 }

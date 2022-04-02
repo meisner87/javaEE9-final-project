@@ -28,7 +28,7 @@ public class Post {
     private void setInitialTimestamp() {
         ZonedDateTime timestamp = ZonedDateTime.now(Clock.systemUTC());
         creationTimestamp = timestamp;
-        updateTimestamp = updateTimestamp;
+        updateTimestamp = creationTimestamp;
 
     }
 

@@ -16,8 +16,8 @@ public class PostConverter implements Converter<PostDto, Post>{
                 .header(postDto.header())
                 .content(postDto.content())
                 .author(postDto.author())
-                .creationTimestamp(ZonedDateTime.parse(postDto.creationTimestamp()))
-                .updateTimestamp(ZonedDateTime.parse(postDto.updateTimestamp()))
+                .creationTimestamp(fromString(postDto.creationTimestamp()))
+                .updateTimestamp(fromString(postDto.updateTimestamp()))
                 .build();
     }
 
@@ -30,4 +30,10 @@ public class PostConverter implements Converter<PostDto, Post>{
                 post.getCreationTimestamp().toString(),
                 post.getUpdateTimestamp().toString());
     }
+
+    private ZonedDateTime fromString(String timestamp) {
+        return timestamp != null ? ZonedDateTime.parse(timestamp) : null;
+    }
+
+
 }
