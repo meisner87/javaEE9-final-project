@@ -8,11 +8,10 @@ import javax.validation.constraints.Size;
 public record PostDto(Long id,
                       String header,
                       @NotEmpty
-                      @Size(min = 3,message = "you're post is to short :)")
+                      @Size(min = 3, message = "you're post is to short :)")
                       String content,
-                      //TODO check if author exists
+                      @Size(min = 3, message = "Author name is to short")
                       @NotEmpty
-                      @Size(min = 3,message = "Author name is to short")
                       String author,
                       @JsonProperty("creation_Timestamp")
                       String creationTimestamp,
