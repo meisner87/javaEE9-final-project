@@ -12,6 +12,8 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/posts")
 //never - ever use entities inside controllers(use dtos)
+@CrossOrigin("http://localhost:4200")
+
 public class PostController {
 
     private final PostService postService;
@@ -24,9 +26,11 @@ public class PostController {
     // /posts?boundary = vs /posts/recent
     @GetMapping("/recent")
     public List<PostDto> readRecentPosts() {
-    log.info("reading recent posts");
-    return postService.readRecentPosts();
+        log.info("reading recent posts");
+
+        return postService.readRecentPosts();
     }
+
     @GetMapping("/recent/{id}")
     public PostDto findRecentPostById(@PathVariable("id") Long postId) {
         // TODO: finish implementation
@@ -40,6 +44,7 @@ public class PostController {
                 "1998",
                 "1988");
     }
+
     @PostMapping()
     public PostDto createNewPost(@Valid @RequestBody PostDto toStore) {
         log.info("trying to store new post: [{}]", toStore);
