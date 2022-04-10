@@ -23,7 +23,7 @@ export class NewsFeedService {
               header: item.header,
               content: item.content,
               author: item.author,
-              creationTimestamp: item.creation_timestamp,
+              creationTimestamp: item.creation_Timestamp,
               updateTimestamp: item.update_timestamp
             })),
         tap(value => console.log('data after processing: ' + JSON.stringify(value)))
@@ -31,9 +31,18 @@ export class NewsFeedService {
   }
 
   createNewPost(newPost: Post) {
-    console.log(`trying to send to backend new post: [${newPost}]`)
-    this.http.post(BACKEND_CREATE_POST, newPost)
+    let payload = {
+      id: newPost.id,
+      header: newPost.header,
+      content: newPost.content,
+      author: newPost.author,
+      creation_Timestamp: newPost.creationTimestamp,
+      update_timestamp: newPost.updateTimestamp
+    }
+    console.log(`trying to send to backend new post: [${newPost}] as payload: [${payload}]`)
+    this.http.post(BACKEND_CREATE_POST, payload)
   }
+
 
 }
 
