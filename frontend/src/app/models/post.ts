@@ -5,6 +5,6 @@ export interface Post{
   content:string,
   author:string
 
-  creationTimestamp:string
-  updateTimestamp:string
+  creationTimestamp:string | null
+  updateTimestamp:string | null
 }

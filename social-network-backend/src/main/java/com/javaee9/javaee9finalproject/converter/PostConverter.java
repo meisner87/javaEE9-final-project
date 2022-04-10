@@ -23,7 +23,8 @@ public class PostConverter implements Converter<PostDto, Post>{
 
     @Override
     public PostDto fromEntityToDto(Post post) {
-        return new PostDto(post.getId(),
+        return new PostDto(
+                post.getId(),
                 post.getHeader(),
                 post.getContent(),
                 post.getAuthor(),
