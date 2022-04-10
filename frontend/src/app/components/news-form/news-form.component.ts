@@ -28,7 +28,7 @@ export class NewsFormComponent {
 
 
   let post: Post = {
-  id:       0,
+  id:       null,
   author:   this.postForm.value.author,
   content:  this.postForm.value.content,
   header:   this.postForm.value.header,
